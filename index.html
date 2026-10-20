@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL BOCHA | Limpieza, Impermeabilización y Pintura Protectora de Techos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',      /* Azul oscuro/negro nocturno */
+                            darker: '#090d16',    /* Fondo extra oscuro */
+                            card: '#1e293b',      /* Fondo de tarjetas */
+                            yellow: '#facc15',    /* Amarillo sol vibrante */
+                            yellowHover: '#eab308',
+                            accent: '#38bdf8'     /* Celeste agua de acento */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* Before/After Interactive Comparison Slider */
+        .ba-slider-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        @media (min-width: 640px) {
+            .ba-slider-container {
+                height: 480px;
+            }
+        }
+
+        .ba-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ba-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+            border-right: 3px solid #facc15;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+        }
+
+        .ba-overlay img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            max-width: none;
+        }
+
+        .ba-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background-color: #facc15;
+            color: #0f172a;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            cursor: ew-resize;
+            z-index: 20;
+            border: 3px solid #ffffff;
+        }
+
+        /* Yellow brush stroke highlight effect */
+        .highlight-yellow {
+            background: linear-gradient(120deg, rgba(250, 204, 21, 0.25) 0%, rgba(250, 204, 21, 0.85) 100%);
+            padding: 0 8px;
+            border-radius: 6px;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 selection:bg-brand-yellow selection:text-brand-dark">
+
+    <!-- TOP BAR -->
+    <div class="bg-brand-darker border-b border-slate-800 text-xs sm:text-sm py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 text-slate-300">
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-location-dot text-brand-yellow"></i>
+                    <strong>Córdoba Capital y Alrededores</strong>
+                </span>
+                <span class="hidden md:flex items-center gap-1.5 border-l border-slate-700 pl-4">
+                    <i class="fas fa-shield-halved text-brand-yellow"></i>
+                    Trabajos 100% Garantizados
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/5493517877274?text=Hola%20EL%20BOCHA,%20necesito%20un%20presupuesto%20para%20mi%20techo." 
+                   target="_blank" 
+                   class="flex items-center gap-2 text-brand-yellow hover:text-white transition font-semibold">
+                    <i class="fab fa-whatsapp text-lg"></i> 351 787 7274
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- LOGO -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="bg-brand-yellow text-brand-dark p-2.5 rounded-xl shadow-lg group-hover:scale-105 transition transform">
+                    <i class="fas fa-house-chimney-crack text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-tight block leading-none text-white">EL BOCHA</span>
+                    <span class="text-[10px] tracking-wider text-brand-yellow font-bold uppercase block mt-0.5">Limpieza e Impermeabilización</span>
+                </div>
+            </a>
+
+            <!-- NAV LINKS DESKTOP -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                <a href="#inicio" class="hover:text-brand-yellow transition">Inicio</a>
+                <a href="#antes-despues" class="hover:text-brand-yellow transition">Antes y Después</a>
+                <a href="#proceso" class="hover:text-brand-yellow transition">Proceso</a>
+                <a href="#clima" class="hover:text-brand-yellow transition">Clima Ideal</a>
+                <a href="#cotizador" class="hover:text-brand-yellow transition">Cotizador</a>
+            </nav>
+
+            <!-- CTA HEADER -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/5493517877274?text=Hola%20EL%20BOCHA,%20quisiera%20pedir%20presupuesto%20sin%20cargo." 
+                   target="_blank" 
+                   class="bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark font-black px-5 py-2.5 rounded-xl text-sm shadow-md transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Presupuesto Sin Cargo</span>
+                </a>
+            </div>
+
+            <!-- MOBILE MENU BTN -->
+            <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden text-2xl text-slate-200 focus:outline-none p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-darker border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#inicio" class="block text-slate-200 font-semibold py-1 hover:text-brand-yellow">Inicio</a>
+            <a href="#antes-despues" class="block text-slate-200 font-semibold py-1 hover:text-brand-yellow">Antes y Después</a>
+            <a href="#proceso" class="block text-slate-200 font-semibold py-1 hover:text-brand-yellow">Nuestro Proceso</a>
+            <a href="#clima" class="block text-slate-200 font-semibold py-1 hover:text-brand-yellow">Clima Ideal</a>
+            <a href="#cotizador" class="block text-slate-200 font-semibold py-1 hover:text-brand-yellow">Cotización de Techo</a>
+            <a href="https://wa.me/5493517877274?text=Hola%20EL%20BOCHA,%20quiero%20consultar%20por%20mi%20techo." 
+               target="_blank" 
+               class="w-full bg-brand-yellow text-brand-dark font-black py-3 rounded-xl text-center block shadow mt-2">
+                <i class="fab fa-whatsapp text-lg mr-1"></i> Contactar por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative py-16 lg:py-28 overflow-hidden bg-gradient-to-b from-brand-darker via-brand-dark to-brand-dark">
+        <!-- Light grid accent background -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#facc15_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left text column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold">
+                        <i class="fas fa-location-dot"></i>
+                        <span>Córdoba Capital y Alrededores</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                        Tu techo más protegido. <br class="hidden sm:inline">
+                        <span class="highlight-yellow inline-block mt-2">Eliminamos hongos, moho y suciedad.</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Especialistas en <strong>limpieza profunda con hidrolavadora, impermeabilización de alta resistencia y pintura protectora</strong>. Prevení filtraciones y mantené tu propiedad impecable durante todo el año.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                        <a href="https://wa.me/5493517877274?text=Hola%20EL%20BOCHA,%20necesito%20un%20presupuesto%20sin%20cargo%20para%20limpieza/impermeabilización%20de%20mi%20techo." 
+                           target="_blank" 
+                           class="bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark font-black px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-3 text-base">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span>Pedí tu Presupuesto Sin Cargo</span>
+                        </a>
+
+                        <a href="#cotizador" 
+                           class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold px-7 py-4 rounded-xl transition flex items-center justify-center gap-2 text-base">
+                            <i class="fas fa-calculator text-brand-yellow"></i>
+                            <span>Calcular Presupuesto</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800 text-center max-w-xl mx-auto lg:mx-0">
+                        <div class="bg-brand-card/60 p-3 rounded-xl border border-slate-800">
+                            <i class="fas fa-shield-check text-brand-yellow text-xl mb-1 block"></i>
+                            <span class="text-xs sm:text-sm font-bold text-white block">Trabajo Garantizado</span>
+                        </div>
+                        <div class="bg-brand-card/60 p-3 rounded-xl border border-slate-800">
+                            <i class="fas fa-file-invoice-dollar text-brand-yellow text-xl mb-1 block"></i>
+                            <span class="text-xs sm:text-sm font-bold text-white block">Presupuesto Sin Cargo</span>
+                        </div>
+                        <div class="bg-brand-card/60 p-3 rounded-xl border border-slate-800">
+                            <i class="fas fa-bolt text-brand-yellow text-xl mb-1 block"></i>
+                            <span class="text-xs sm:text-sm font-bold text-white block">Respuesta Rápida</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right visual column -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl bg-brand-card group">
+                        <!-- Card header highlight -->
+                        <div class="bg-brand-yellow text-brand-dark font-black px-6 py-3 flex items-center justify-between text-sm">
+                            <span class="flex items-center gap-2">
+                                <i class="fas fa-broom"></i> Servicio Profesional de Techos
+                            </span>
+                            <span class="bg-brand-dark text-brand-yellow text-xs px-2.5 py-1 rounded-full font-bold">EL BOCHA</span>
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=900&q=80" 
+                             alt="Especialista en techos trabajando" 
+                             class="w-full h-80 sm:h-96 object-cover"
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e293b/facc15?text=EL+BOCHA+Limpieza+de+Techos';">
+
+                        <div class="p-6 bg-slate-900/90 backdrop-blur border-t border-slate-800 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-extrabold text-lg text-white">¿Techo con moho o humedad?</h3>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">Solución Definitiva</span>
+                            </div>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                Aplicamos productos impermeabilizantes y selladores finales de primera calidad. Protegé tu casa antes de la temporada de lluvias.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION "ANTES Y DESPUÉS" -->
+    <section id="antes-despues" class="py-20 bg-brand-darker border-t border-slate-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-brand-yellow font-black uppercase text-xs tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">
+                    Resultados Comprobados
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Antes y Después</h2>
+                <p class="text-slate-300 text-lg font-medium">
+                    "Un techo limpio es un hogar más seguro"
+                </p>
+                <p class="text-slate-400 text-sm">
+                    Deslizá el control central para ver la transformación de un techo sucio con moho a uno completamente limpio e impermeabilizado.
+                </p>
+            </div>
+
+            <!-- Slider interactivo Antes/Después -->
+            <div class="max-w-4xl mx-auto bg-brand-card p-3 sm:p-4 rounded-3xl border border-slate-800 shadow-2xl">
+                <div class="ba-slider-container" id="ba-slider">
+                    <!-- DESPUÉS (Fondo base) -->
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" 
+                         alt="Techo Limpio e Impermeabilizado (Después)" 
+                         class="ba-image"
+                         onerror="this.onerror=null; this.src='https://placehold.co/1200x800/1e293b/ffffff?text=DESPUES+-+Techo+Limpio+y+Protegido';">
+                    <span class="absolute top-4 right-4 bg-emerald-600 text-white font-black text-xs px-3.5 py-1.5 rounded-lg shadow-lg z-10 tracking-wide uppercase">
+                        <i class="fas fa-check-circle mr-1"></i> Después (Limpio y Sellado)
+                    </span>
+
+                    <!-- ANTES (Capa superior recortable) -->
+                    <div class="ba-overlay" id="ba-overlay">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" 
+                             alt="Techo Sucio con Moho (Antes)" 
+                             id="ba-before-img"
+                             onerror="this.onerror=null; this.src='https://placehold.co/1200x800/0f172a/facc15?text=ANTES+-+Techo+con+Moho+y+Hongos';">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white font-black text-xs px-3.5 py-1.5 rounded-lg shadow-lg z-10 tracking-wide uppercase">
+                            <i class="fas fa-triangle-exclamation mr-1"></i> Antes (Hongos y Suciedad)
+                        </span>
+                    </div>
+
+                    <!-- BOTÓN SLIDER / DESLIZADOR -->
+                    <div class="ba-handle" id="ba-handle">
+                        <i class="fas fa-arrows-left-right text-base"></i>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 px-2 text-xs text-slate-400">
+                    <span><i class="fas fa-hand-pointer text-brand-yellow mr-1"></i> Hacé clic o arrastrá el slider horizontalmente.</span>
+                    <span class="font-semibold text-slate-300">Trabajos realizados en Córdoba Capital</span>
+                </div>
+            </div>
+
+            <!-- Tarjetas de impacto rápido -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12">
+                <div class="bg-slate-900/80 p-6 rounded-2xl border border-red-500/20 flex gap-4 items-start">
+                    <div class="bg-red-500/10 text-red-400 p-3 rounded-xl shrink-0">
+                        <i class="fas fa-triangle-exclamation text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-base">Riesgos de un techo sin mantenimiento</h4>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Los hongos y el moho devoran los poros de las tejas o losas, reteniendo agua. En invierno o tormentas fuertemente propician filtraciones profundas y humedad en paredes interiores.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 p-6 rounded-2xl border border-emerald-500/20 flex gap-4 items-start">
+                    <div class="bg-emerald-500/10 text-emerald-400 p-3 rounded-xl shrink-0">
+                        <i class="fas fa-circle-check text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-base">Beneficio de la Impermeabilización EL BOCHA</h4>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Se sella la porosidad, se repele la humedad de forma hidrófuga y se refleja el calor solar, protegiendo la estructura de tu casa y extendiendo años su vida útil.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION "NUESTRO PROCESO DE TRABAJO" -->
+    <section id="proceso" class="py-20 bg-brand-dark border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-yellow font-black uppercase text-xs tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">
+                    Metodología Eficiente
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Nuestro Proceso de Trabajo</h2>
+                <p class="text-slate-300">
+                    Garantizamos resultados óptimos ejecutando 3 pasos esenciales en cada superficie.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+
+                <!-- PASO 1 -->
+                <div class="bg-brand-card rounded-2xl p-8 border border-slate-800 hover:border-brand-yellow/50 transition relative group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 bg-brand-yellow text-brand-dark rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition transform">
+                            01
+                        </div>
+                        <div class="text-brand-yellow text-xs font-bold uppercase tracking-wider">
+                            Paso Uno
+                        </div>
+                        <h3 class="text-2xl font-black text-white">Limpieza con Hidro</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Eliminamos exhaustivamente suciedad adherida, moho, musgo, verdín y restos sueltos utilizando hidrolavadoras de alta presión. Dejamos la superficie totalmente limpia para la fijación del producto.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-800 text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fas fa-droplet text-brand-yellow"></i>
+                        <span>Remoción completa de verdín y hongos</span>
+                    </div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div class="bg-brand-card rounded-2xl p-8 border border-slate-800 hover:border-brand-yellow/50 transition relative group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 bg-brand-yellow text-brand-dark rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition transform">
+                            02
+                        </div>
+                        <div class="text-brand-yellow text-xs font-bold uppercase tracking-wider">
+                            Paso Dos
+                        </div>
+                        <h3 class="text-2xl font-black text-white">Pintura Impermeabilizante</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Aplicación de capas de pintura impermeabilizante elastomérica de primera marca. Forma una membrana protectora continua que bloquea el paso del agua y resiste los rayos solares UV.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-800 text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fas fa-shield-halved text-brand-yellow"></i>
+                        <span>Protección hídrica y solar continua</span>
+                    </div>
+                </div>
+
+                <!-- PASO 3 -->
+                <div class="bg-brand-card rounded-2xl p-8 border border-slate-800 hover:border-brand-yellow/50 transition relative group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 bg-brand-yellow text-brand-dark rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition transform">
+                            03
+                        </div>
+                        <div class="text-brand-yellow text-xs font-bold uppercase tracking-wider">
+                            Paso Tres
+                        </div>
+                        <h3 class="text-2xl font-black text-white">Sellador Final</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Capa de recubrimiento sellador final que otorga máxima resistencia mecánica, protege los pigmentos del color y otorga una durabilidad extendida por años.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-800 text-xs text-slate-400 flex items-center gap-2">
+                        <i class="fas fa-star text-brand-yellow"></i>
+                        <span>Terminación estética y mayor durabilidad</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION "CONDICIONES CLIMÁTICAS IDEALES" -->
+    <section id="clima" class="py-20 bg-brand-darker border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-yellow font-black uppercase text-xs tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">
+                    Planificación Profesional
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Condiciones Climáticas Ideales</h2>
+                <p class="text-slate-300">
+                    Para asegurar la adherencia química perfecta y la máxima efectividad de los impermeabilizantes, trabajamos con condiciones meteorológicas controladas.
+                </p>
+            </div>
+
+            <!-- Grid de 5 tarjetas informativas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+                <!-- Card 1 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 hover:border-brand-yellow/40 transition">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="font-extrabold text-white text-lg">Sol Despejado</h3>
+                    <p class="text-xs text-slate-300">Cielo soleado y estable para favorecer el proceso de evaporación del agua de lavado.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 hover:border-brand-yellow/40 transition">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20">
+                        <i class="fas fa-house-chimney-window"></i>
+                    </div>
+                    <h3 class="font-extrabold text-white text-lg">Techo Seco</h3>
+                    <p class="text-xs text-slate-300">Superficie totalmente libre de humedad retenida en hendiduras o uniones.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 hover:border-brand-yellow/40 transition">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3 class="font-extrabold text-white text-lg">4-5 Días Sin Lluvia</h3>
+                    <p class="text-xs text-slate-300">Pronóstico seco y estable garantizado previo y posterior a las tareas.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 hover:border-brand-yellow/40 transition">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20">
+                        <i class="fas fa-temperature-arrow-up"></i>
+                    </div>
+                    <h3 class="font-extrabold text-white text-lg">Temp. +20 °C</h3>
+                    <p class="text-xs text-slate-300">Temperatura ambiental idónea para el curado químico elástico de las pinturas.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 hover:border-brand-yellow/40 transition sm:col-span-2 lg:col-span-1">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-extrabold text-white text-lg">Secado 24-48 hs</h3>
+                    <p class="text-xs text-slate-300">Tiempo de reposo de capas para una estanqueidad completa contra temporales.</p>
+                </div>
+
+            </div>
+
+            <!-- Info bar -->
+            <div class="mt-12 bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 text-left">
+                    <i class="fas fa-calendar-check text-brand-yellow text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Consultá la fecha disponible para tu zona</h4>
+                        <p class="text-xs text-slate-400">Revisamos el pronóstico de Córdoba Capital y programamos tu servicio.</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/5493517877274?text=Hola%20EL%20BOCHA,%20quiero%20consultar%20disponibilidad%20de%20fechas%20para%20limpiar/impermeabilizar%20mi%20techo." 
+                   target="_blank" 
+                   class="bg-brand-yellow text-brand-dark font-black px-6 py-2.5 rounded-xl text-xs sm:text-sm hover:bg-brand-yellowHover transition shrink-0">
+                    <i class="fab fa-whatsapp mr-1"></i> Consultar Disponibilidad
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR Y FORMULARIO DE CONTACTO INTERACTIVO -->
+    <section id="cotizador" class="py-20 bg-brand-dark border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Columna informativa -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-yellow font-black uppercase text-xs tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">
+                        Presupuesto Inmediato
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Cotizá tu Techo en Minutos</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Completá los datos de tu techo en nuestro calculador. Te genera una solicitud lista para enviar a nuestro WhatsApp (<strong>351 787 7274</strong>) y recibirás la propuesta personalizada sin cargo.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 bg-brand-card p-4 rounded-xl border border-slate-800">
+                            <div class="w-12 h-12 bg-brand-yellow text-brand-dark font-black rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Presupuesto Sin Cargo</h4>
+                                <p class="text-xs text-slate-400">Evaluación sin compromiso en Córdoba Capital y alrededores.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-brand-card p-4 rounded-xl border border-slate-800">
+                            <div class="w-12 h-12 bg-brand-yellow text-brand-dark font-black rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Atención Inmediata</h4>
+                                <p class="text-xs text-slate-400">Te respondemos por WhatsApp en cuestión de minutos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-brand-card p-4 rounded-xl border border-slate-800">
+                            <div class="w-12 h-12 bg-brand-yellow text-brand-dark font-black rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Zona de Cobertura</h4>
+                                <p class="text-xs text-slate-400">Córdoba Capital, Villa Allende, Carlos Paz y alrededores.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna del Formulario Calculador -->
+                <div class="lg:col-span-7 bg-brand-card p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                        <h3 class="text-xl font-extrabold text-white flex items-center gap-2">
+                            <i class="fas fa-calculator text-brand-yellow"></i> Solicitud Rápida de Cotización
+                        </h3>
+                        <span class="text-xs text-slate-400 font-bold">Paso Final</span>
+                    </div>
+
+                    <form id="quote-form" onsubmit="sendQuoteToWhatsApp(event)" class="space-y-5">
+                        
+                        <!-- Nombre -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nombre y Apellido</label>
+                            <input type="text" id="cust-name" required 
+                                   class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow transition" 
+                                   placeholder="Ej. Martín Gómez">
+                        </div>
+
+                        <!-- Tipo de Techo -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Tipo de Techo</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="roof-type" value="Tejas (Francesas/Coloniales)" checked class="peer sr-only">
+                                    <div class="bg-slate-900 border border-slate-700 peer-checked:border-brand-yellow peer-checked:bg-brand-yellow/10 peer-checked:text-brand-yellow p-3 rounded-xl text-center transition">
+                                        <i class="fas fa-vihara block text-lg mb-1"></i>
+                                        <span class="text-xs font-bold">Tejas</span>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="roof-type" value="Losa / Plana" class="peer sr-only">
+                                    <div class="bg-slate-900 border border-slate-700 peer-checked:border-brand-yellow peer-checked:bg-brand-yellow/10 peer-checked:text-brand-yellow p-3 rounded-xl text-center transition">
+                                        <i class="fas fa-border-all block text-lg mb-1"></i>
+                                        <span class="text-xs font-bold">Losa / Plana</span>
+                                    </div>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="roof-type" value="Chapa / Metal" class="peer sr-only">
+                                    <div class="bg-slate-900 border border-slate-700 peer-checked:border-brand-yellow peer-checked:bg-brand-yellow/10 peer-checked:text-brand-yellow p-3 rounded-xl text-center transition">
+                                        <i class="fas fa-sheet-plastic block text-lg mb-1"></i>
+                                        <span class="text-xs font-bold">Chapa</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Metros Cuadrados Estimados -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-slate-300">Metros Cuadrados Estimados</label>
+                                <span id="m2-display" class="text-sm font-black text-brand-yellow bg-brand-yellow/10 px-2.5 py-0.5 rounded-md border border-brand-yellow/20">80 m²</span>
+                            </div>
+                            <input type="range" id="m2-range" min="20" max="300" step="10" value="80" 
+                                   oninput="document.getElementById('m2-display').innerText = this.value + ' m²'"
+                                   class="w-full accent-brand-yellow cursor-pointer h-2 bg-slate-900 rounded-lg">
+                            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                                <span>20 m²</span>
+                                <span>150 m²</span>
+                                <span>300+ m²</span>
+                            </div>
+                        </div>
+
+                        <!-- Servicios Requeridos -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Servicios Deseados</label>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2 bg-slate-900 p-3 rounded-xl border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" id="srv-clean" checked class="accent-brand-yellow w-4 h-4 rounded">
+                                    <span class="text-slate-200">Limpieza profunda con Hidrolavadora (Eliminación moho/hongos)</span>
+                                </label>
+                                <label class="flex items-center gap-2 bg-slate-900 p-3 rounded-xl border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" id="srv-imper" checked class="accent-brand-yellow w-4 h-4 rounded">
+                                    <span class="text-slate-200">Aplicación de Pintura Impermeabilizante + Sellador Final</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Barrio / Zona -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Barrio o Localidad</label>
+                            <input type="text" id="cust-location" required 
+                                   class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-yellow transition" 
+                                   placeholder="Ej. Barrio Cerro de las Rosas, Córdoba">
+                        </div>
+
+                        <!-- Botón Enviar a WhatsApp -->
+                        <button type="submit" 
+                                class="w-full bg-brand-yellow hover:bg-brand-yellowHover text-brand-dark font-black py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-base">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span>Enviar Solicitud a WhatsApp</span>
+                        </button>
+
+                        <p class="text-[11px] text-center text-slate-400">
+                            <i class="fas fa-lock mr-1 text-brand-yellow"></i> Tus datos se utilizarán únicamente para responder tu presupuesto vía WhatsApp.
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-darker border-t border-slate-800 py-12 text-sm text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8">
+                <div class="flex items-center gap-3">
+                    <div class="bg-brand-yellow text-brand-dark p-2.5 rounded-xl font-bold">
+                        <i class="fas fa-house-chimney-crack text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-black text-white block">EL BOCHA</span>
+                        <span class="text-xs text-brand-yellow font-bold uppercase">Limpieza & Impermeabilización de Techos</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-6 font-semibold text-xs text-slate-300">
+                    <a href="#inicio" class="hover:text-brand-yellow transition">Inicio</a>
+                    <a href="#antes-despues" class="hover:text-brand-yellow transition">Antes y Después</a>
+                    <a href="#proceso" class="hover:text-brand-yellow transition">Proceso</a>
+                    <a href="#clima" class="hover:text-brand-yellow transition">Clima Ideal</a>
+                    <a href="#cotizador" class="hover:text-brand-yellow transition">Cotizador</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <p>&copy; 2026 EL BOCHA. Todos los derechos reservados. Córdoba Capital y Alrededores.</p>
+                <div class="flex items-center gap-4 text-slate-300 font-bold">
+                    <a href="https://wa.me/5493517877274" target="_blank" class="hover:text-brand-yellow transition flex items-center gap-1.5">
+                        <i class="fab fa-whatsapp text-brand-yellow text-base"></i> 351 787 7274
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/5493517877274?text=Hola%20EL%20BOCHA,%20necesito%20un%20presupuesto%20para%20limpieza/impermeabilización%20de%20mi%20techo." 
+       target="_blank" 
+       aria-label="Contactar por WhatsApp"
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition transform hover:scale-110 border-2 border-white">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <script>
+        // Menu mobile toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking any link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Dynamic WhatsApp quotation generator
+        function sendQuoteToWhatsApp(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('cust-name').value.trim();
+            const location = document.getElementById('cust-location').value.trim();
+            const roofType = document.querySelector('input[name="roof-type"]:checked').value;
+            const m2 = document.getElementById('m2-range').value;
+
+            const cleanSrv = document.getElementById('srv-clean').checked;
+            const imperSrv = document.getElementById('srv-imper').checked;
+
+            let services = [];
+            if (cleanSrv) services.push('Limpieza con Hidro');
+            if (imperSrv) services.push('Impermeabilización + Sellador Final');
+
+            const serviceText = services.length > 0 ? services.join(', ') : 'Consulta General';
+
+            const message = `Hola EL BOCHA! Quisiera solicitar un *Presupuesto Sin Cargo*:%0A%0A` +
+                            `👤 *Nombre:* ${encodeURIComponent(name)}%0A` +
+                            `📍 *Ubicación:* ${encodeURIComponent(location)}%0A` +
+                            `🏠 *Tipo de Techo:* ${encodeURIComponent(roofType)}%0A` +
+                            `📐 *Superficie Aprox.:* ${m2} m²%0A` +
+                            `🛠️ *Servicios:* ${encodeURIComponent(serviceText)}`;
+
+            const phone = '5493517877274';
+            const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Before/After Interactive Image Slider Handler
+        function initBeforeAfterSlider() {
+            const container = document.getElementById('ba-slider');
+            const overlay = document.getElementById('ba-overlay');
+            const beforeImg = document.getElementById('ba-before-img');
+            const handle = document.getElementById('ba-handle');
+
+            if (!container || !overlay || !handle || !beforeImg) return;
+
+            let isDragging = false;
+
+            function updateSliderWidth() {
+                const containerWidth = container.offsetWidth;
+                beforeImg.style.width = containerWidth + 'px';
+            }
+
+            window.addEventListener('resize', updateSliderWidth);
+            updateSliderWidth();
+
+            function setPosition(x) {
+                const rect = container.getBoundingClientRect();
+                let offsetX = x - rect.left;
+
+                if (offsetX < 0) offsetX = 0;
+                if (offsetX > rect.width) offsetX = rect.width;
+
+                const percentage = (offsetX / rect.width) * 100;
+                overlay.style.width = percentage + '%';
+                handle.style.left = percentage + '%';
+            }
+
+            // Mouse Events
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                setPosition(e.clientX);
+            });
+
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                setPosition(e.clientX);
+            });
+
+            // Touch Events
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                if (e.touches[0]) setPosition(e.touches[0].clientX);
+            });
+
+            window.addEventListener('touchend', () => { isDragging = false; });
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                if (e.touches[0]) setPosition(e.touches[0].clientX);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initBeforeAfterSlider);
+    </script>
+</body>
+</html>
